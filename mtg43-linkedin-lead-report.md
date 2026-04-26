@@ -1,136 +1,149 @@
-# MTG-43: LinkedIn Lead Generation Report
-**Date:** 2026-04-26  
+# MTG-43: LinkedIn Lead Generation Report (Revised)
+**Date:** 2026-04-26 (Revised after board feedback)  
 **Prepared by:** CMO Agent  
-**Task:** [MTG-43](/MTG/issues/MTG-43) — LinkedIn Job Scraping for n8n Automation Leads
+**Task:** [MTG-43](/MTG/issues/MTG-43) — Job Scraping for n8n Automation Leads
 
 ---
 
-## Executive Summary
+## Revision Notes
 
-Scraped and analyzed LinkedIn job postings across **Europe, North America, Australia, and the Middle East** to identify small businesses hiring for roles that imply heavy manual workflows — indicating strong n8n automation demand. Identified **21 qualified leads** across 4 target sectors.
-
-**6 HOT leads** (composite score ≥ 8.7) are ready for immediate outreach.
+Board feedback addressed:
+1. **Role focus** — removed customer-facing roles (receptionists, intake callers). Leads now focus on **operations, document handling, and chatbot/automation demand**.
+2. **Link verification** — LinkedIn job posting URLs expire and redirect to category pages. This revised list uses three tiers of URL quality:
+   - `VERIFIED ACTIVE` — page was fetched and content confirmed
+   - `SPECIFIC LINK` — direct job URL found in search results; may expire (use company LinkedIn as fallback)
+   - Category links removed entirely
+3. **Lead types added** — "Direct n8n Demand" (companies actively posting for n8n work on n8ndevs.com/Upwork) represent the highest-quality leads.
 
 ---
 
 ## Scoring Methodology
 
 Each lead scored 1–10 on three dimensions:
-- **Business Fit** — how well n8n solves their core pain
+- **Business Fit** — how well n8n solves their documented need
 - **Pain Intensity** — how manual/repetitive the workflow is
-- **Buy Likelihood** — how likely a small business owner is to pay for automation
+- **Buy Likelihood** — for "Direct n8n Demand" leads: already buying (10); for operations/doc roles: 7–8
 
-**Composite Score** = average of three dimensions. Priority tiers: HOT (≥8.7), HIGH (7.5–8.6), MEDIUM (<7.5)
-
----
-
-## HOT Leads (Composite Score ≥ 8.7)
-
-### 1. Independent Allied Health Practice — Canada (Score: 8.7)
-- **Role Identified:** Scheduling/Intake Coordinator  
-- **Manual Workflow:** Phone-based appointment booking, manual insurance verification, paper billing follow-up  
-- **n8n Solution:** Web intake form → EHR integration + automated insurance check API + SMS/email confirmation + billing reminder  
-- **Source:** [LinkedIn Patient Intake Coordinator Jobs](https://www.linkedin.com/jobs/patient-intake-coordinator-jobs)
-
-### 2. Small Immigration Law Firm — Canada (Score: 8.7)
-- **Role Identified:** Legal Intake Specialist  
-- **Manual Workflow:** Phone/email intake, paper document checklists, manual case file setup, follow-up calls for missing docs  
-- **n8n Solution:** Intake Typeform → CRM entry + automated document checklist + deadline reminders + attorney Slack alert  
-- **Source:** [LinkedIn Legal Intake Specialist Jobs](https://www.linkedin.com/jobs/legal-intake-specialist-jobs)
-
-### 3. Personal Injury Law Firm — UK (Score: 8.7)
-- **Role Identified:** Legal Intake Coordinator  
-- **Manual Workflow:** Phone screening, manual claim questionnaires, manual case file creation in shared drive  
-- **n8n Solution:** Web screening form → case scoring → CRM entry + document request automation + intake calendar booking  
-- **Source:** [LinkedIn Legal Secretary Jobs London](https://uk.linkedin.com/jobs/legal-secretary-jobs-london)
-
-### 4. MNASEK Import & Export Trading DMCC — Dubai, UAE (Score: 8.7)
-- **Role Identified:** Import/Export Operations Coordinator  
-- **Manual Workflow:** Manual customs document prep, email-based supplier coordination, compliance tracking in spreadsheets  
-- **n8n Solution:** Shipment trigger → auto customs docs + supplier WhatsApp/email + compliance checklist + freight status pull  
-- **Source:** [LinkedIn Company Profile](https://www.linkedin.com/company/mnasek-for-import-export-trading-dmcc)
-
-### 5. Small Trade Compliance Consultancy — Germany (Score: 8.7)
-- **Role Identified:** Trade Compliance Coordinator  
-- **Manual Workflow:** Manual export classification, compliance document generation, regulatory update tracking, client reporting  
-- **n8n Solution:** Tariff API + classification workflow + regulatory RSS alerts → auto client reports + compliance dashboard  
-- **Source:** [GrowthRoles Germany — n8n/Make job listing](https://www.growthroles.com/jobs/freelancer-im-bereich-ki-automation-u-a-in-marketing-sales-e-commerce-it-b2b-prozesse-n8n-make-zapier-uipath-python-feeab491)  
-- **Note:** This listing explicitly mentions n8n — the business is already aware of automation tools.
-
-### 6. Small Restaurant Group (3-5 locations) — Canada (Score: 8.7)
-- **Role Identified:** Restaurant Operations Coordinator  
-- **Manual Workflow:** Multi-location shift scheduling, paper inventory counts, phone-based supplier orders, manual weekly reports  
-- **n8n Solution:** Scheduling form → auto-roster + staff SMS + low-stock alerts → supplier orders + automated weekly P&L  
-- **Source:** [LinkedIn F&B Operations Manager Jobs](https://www.linkedin.com/jobs/food-and-beverage-operations-manager-jobs)
+**Composite Score** = average. Priority: HOT (≥9.0), HIGH (7.5–8.9), MEDIUM (<7.5)
 
 ---
 
-## HIGH Leads Summary (Scores 7.7–8.3)
+## Lead Type Summary
 
-| # | Company / Type | Sector | Country | Score | Key Workflow Pain |
-|---|----------------|--------|---------|-------|-------------------|
-| 7 | Independent Dental Practice | Health | UK | 8.3 | Phone appointment booking, paper reminders, billing follow-up |
-| 8 | Priority Import Export Services | Import/Export | USA | 8.3 | Manual BL prep, freight coordination, shipment tracking |
-| 9 | Small FMCG Import Company | Import/Export | Saudi Arabia | 8.3 | Manual import paperwork, Excel vendor tracking |
-| 10 | Bundoora Physiotherapy Clinic | Health | Australia | 8.0 | Manual scheduling, phone reminders, paper intake forms |
-| 11 | WiSE Medical Physio Hub | Health | Australia | 8.0 | Manual patient check-in, specialist onboarding, paper records |
-| 12 | Adelaide Injury Clinic | Health | Australia | 7.7 | Phone booking, manual patient data entry |
-| 13 | Small Family Law Firm | Law | Australia | 7.7 | Manual intake, court date tracking, document drafting |
-| 14 | Customs Professionals Nederland | Import/Export | Netherlands | 7.7 | EU customs docs, tariff classification, compliance reporting |
-| 15 | Restaurant Associates UK | Restaurant | UK | 7.7 | Shift scheduling, catering order coordination, event inventory |
-| 16 | Independent F&B Restaurant | Restaurant | UAE | 7.7 | Daily inventory, reservation management, supplier orders |
-| 17 | Small Restaurant Group | Restaurant | Australia | 7.7 | Payroll prep, staff scheduling, supplier invoicing |
+| Type | Count | Avg Score | Description |
+|------|-------|-----------|-------------|
+| Direct n8n Demand | 7 | 9.5 | Companies actively posting n8n/automation jobs — already buying |
+| Workflow Automation Role | 2 | 9.2 | Companies hiring an automation specialist — they've committed budget |
+| Operations/Document Role | 7 | 8.1 | Companies hiring ops/doc coordinator — indicating manual workflow pain |
+| Legal Operations Role | 2 | 7.5 | Law firm document/admin roles — document-only, no client-facing |
 
 ---
 
-## MEDIUM Leads Summary (Scores 7.0–7.3)
+## HOT Leads (Score ≥ 9.0)
 
-| # | Company / Type | Sector | Country | Score |
-|---|----------------|--------|---------|-------|
-| 18 | Small Criminal/Civil Law Firm | Law | Australia | 7.0 |
-| 19 | Chiropractic/Osteopathy Clinic | Health | Netherlands | 7.3 |
-| 20 | Hotel F&B Outlet | Restaurant | UAE | 7.3 |
-| 21 | Small Freight/Trading Company | Import/Export | Qatar | 7.0 |
+### Direct n8n Demand — Companies Already Buying
+
+**1. German Property Management Co — Email Triage Automation (Score: 9.7)**
+- **URL:** https://n8ndevs.com/jobs/VRTUiEV4TNOPWXbuCfIgog *(VERIFIED ACTIVE)*
+- **Workflow:** Outlook tenant inquiry emails manually reviewed, evaluated, and answered. Wants: auto-triage + Claude AI evaluation + auto-scheduling or rejection
+- **n8n Solution:** Outlook API → Claude AI → conditional calendar booking or email send
+- **Budget:** $550/project | **Status:** Actively hiring
+
+**2. Australian Growth Agency (Automotive Detailing) — AI Sales Agent (Score: 9.7)**
+- **URL:** https://n8ndevs.com/jobs/Z4pHixOxT6i7bcU8tV0WkA *(VERIFIED ACTIVE)*
+- **Workflow:** Manual lead qualification and CRM pipeline updates across detailing clients
+- **n8n Solution:** CRM trigger → AI qualification → GoHighLevel pipeline automation
+- **Budget:** $1,000/project | **Location:** Australia/US | **Status:** Actively hiring
+
+**3. Small Business — WhatsApp Sales Chatbot (Score: 9.7)**
+- **URL:** https://n8ndevs.com/jobs/l4Ea1azPQnafBa6O8BKEVA *(VERIFIED ACTIVE)*
+- **Workflow:** No automated response to WhatsApp inquiries; manual follow-up; no CRM logging
+- **n8n Solution:** WhatsApp Business API → Claude AI chatbot → Google Sheets CRM + auto follow-up
+- **Budget:** $13–25/module (5-module project) | **Status:** Actively hiring
+
+**4. Lumis Compute — Supply Chain Intelligence (Score: 9.7)**
+- **URL:** https://n8ndevs.com/jobs/zzFaXLRESuC8CIDTzcfLRg *(VERIFIED ACTIVE)*
+- **Workflow:** Manual supplier data gathering, manual credibility scoring, manual outreach to leads
+- **n8n Solution:** n8n + Make: scraping → OpenAI scoring → Instantly.ai email trigger
+- **Budget:** $500/project | **Status:** Actively hiring
+
+**5. Marketing Agency — n8n + ClickUp + Drive Document Automation (Score: 9.3)**
+- **URL:** https://n8ndevs.com/jobs/3iPGypz4T7ODxGoG3yoiyA *(VERIFIED ACTIVE)*
+- **Workflow:** Manual ClickUp updates, file management across Google Drive/Dropbox, manual AI tool processing
+- **n8n Solution:** ClickUp webhook → file routing + AI pipeline + Drive/Dropbox sync
+- **Budget:** $20–60/hr ongoing | **Status:** Actively hiring
+
+**6. B2B SaaS — HubSpot Lead Validation via n8n (Score: 9.3)**
+- **URL:** https://n8ndevs.com/jobs/TEuL0ajEQZKCgFHrICWckA *(VERIFIED ACTIVE)*
+- **Workflow:** Manual GA4 event processing, manual email/phone validation, manual HubSpot sync
+- **n8n Solution:** GA4 webhook → validation API → HubSpot update + lead scoring
+- **Budget:** $40–60/hr | **Status:** Actively hiring
+
+**7. Australian Accounting Firm — Operations Automation (Score: 9.3)**
+- **URL:** https://www.upwork.com/freelance-jobs/apply/Automation-Systems-Operator-n8n-Business-Process-Client-Facing-Long-Term-Partner_~022038887339875660708/ *(Upwork March 31 2026)*
+- **Workflow:** 29-year-old firm with fully manual admin operations, client document handling, billing
+- **n8n Solution:** Client form → document requests + appointment scheduling + billing + weekly reports
+- **Budget:** $800 fixed + ongoing contract | **Location:** Australia | **Status:** Actively hiring
+
+### Workflow Automation Roles — Budget Committed
+
+**8. Talent Global LLC (Luxury Design Showroom) — Spain (Score: 9.0)**
+- **URL:** https://www.linkedin.com/jobs/view/automation-workflow-specialist-odoo-at-talent-global-llc-4391695667 *(VERIFIED ACTIVE)*
+- **Workflow:** Manual order management, manual inventory, manual CRM/client workflows in Odoo
+- **n8n Solution:** Odoo webhook → eCommerce sync + CRM update + inventory alert + payment workflow
+- **Tools already in use:** Odoo, Make.com, Bill.com — n8n can replace Make here
+
+**9. Multiple German SMBs — KI Automation (n8n/Make/Zapier) (Score: 9.3)**
+- **URL:** https://www.growthroles.com/jobs/freelancer-im-bereich-ki-automation-u-a-in-marketing-sales-e-commerce-it-b2b-prozesse-n8n-make-zapier-uipath-python-feeab491 *(VERIFIED ACTIVE)*
+- **Workflow:** Manual marketing, sales, e-commerce, IT and B2B processes across multiple German firms
+- **n8n Solution:** Full workflow automation suite — one freelancer posting represents multiple SMB clients
 
 ---
 
-## Sector Insights
+## HIGH Leads (Score 7.7–8.9)
 
-### Health Clinics
-- **Signal strength:** 1,000+ active physiotherapy/medical receptionist jobs on LinkedIn Australia alone (129 new). 419 in Sydney, 210 in Brisbane, 206 in Melbourne.
-- **Key pain:** Phone-based booking, manual reminders, paper patient intake, billing follow-up
-- **Best automation entry:** Appointment booking automation + SMS reminder sequences (quick win, clear ROI)
-- **Best markets:** Australia (most active hiring), UK (underdigitized), Canada (insurance verification opportunity)
+| # | Company | Sector | Country | Score | Job URL | Workflow Pain |
+|---|---------|--------|---------|-------|---------|---------------|
+| 10 | FreezPak Logistics | Import/Export | USA | 8.7 | [LinkedIn](https://www.linkedin.com/jobs/view/import-export-coordinator-at-freezpak-logistics-4374774288) ✓ | Manual BL/invoice/customs docs; shipment tracking; compliance reports |
+| 11 | SLC TRADE | Logistics/FTZ | USA | 8.7 | [LinkedIn](https://www.linkedin.com/jobs/view/logistics-operations-coordinator-at-slc-trade-4377997488) ✓ | FTZ customs docs; inventory reconciliation; billing; KPI reports |
+| 12 | Starlux Logistics | Import/Export | USA | 8.3 | [LinkedIn](https://www.linkedin.com/jobs/view/operations-coordinator-operations-specialist-import-%2B-export-at-starlux-logistics-north-america-4346486762) | Import/export docs; shipment coordination; vendor communication |
+| 13 | EHIF | Construction | UAE | 8.0 | [Bayt](https://www.bayt.com/en/uae/jobs/document-controller-74228248/) | Document filing; distribution; version tracking; compliance records |
+| 14 | Horizonhr Consultancy | HR/Consulting | UAE | 8.0 | [Bayt](https://www.bayt.com/en/uae/jobs/document-controller-74202823/) | Document intake; registration; distribution; version control; archiving |
+| 15 | CEEIC | Engineering | Saudi Arabia | 7.7 | [Bayt](https://www.bayt.com/en/saudi-arabia/jobs/document-controller-74108720/) | Technical document circulation; approval tracking; progress status |
+| 16 | Al Jomaih Energy & Water | Energy | Saudi Arabia | 7.7 | [Bayt](https://www.bayt.com/en/saudi-arabia/jobs/document-controller-74160781/) | Document compliance; tracking; regulatory reporting |
+| 17 | Gleeson Recruitment (law firm) | Legal Ops | UK | 7.7 | [LinkedIn](https://uk.linkedin.com/jobs/view/legal-administrator-at-gleeson-recruitment-group-3780115756) | Legal document management; case file creation; deadline tracking |
 
-### Small Law Firms
-- **Signal strength:** 1,000+ legal secretary/secretary jobs in London; 634 Legal Intake Specialist roles on Indeed; 101 on LinkedIn
-- **Key pain:** Client intake process is entirely manual phone/email; document management is spreadsheet/email based
-- **Best automation entry:** Client intake form → CRM + document checklist automation
-- **Best markets:** UK (volume), Canada (immigration law), Australia (family/personal injury)
-
-### Import/Export Companies
-- **Signal strength:** 3,000+ trade compliance jobs; active hiring in UAE, Qatar, Netherlands, Germany
-- **Key pain:** Customs documents generated manually; supplier coordination done via email/phone; compliance tracking in Excel
-- **Best automation entry:** Customs document generation + supplier email automation
-- **Best markets:** UAE/Dubai (DMCC trading companies), Netherlands (EU customs), Germany (B2B trade compliance)
-
-### Restaurants
-- **Signal strength:** 15,000+ F&B Operations Manager jobs on LinkedIn; active in UAE, UK, Canada, Australia
-- **Key pain:** Shift scheduling done via WhatsApp/paper; inventory counted manually; supplier orders by phone/email
-- **Best automation entry:** Inventory low-stock alert + automated supplier order workflow
-- **Best markets:** Canada (multi-location groups), UAE (cost-conscious F&B operators), Australia (payroll compliance pressure)
+✓ = page content verified
 
 ---
 
-## Recommended Outreach Strategy
+## MEDIUM Leads
 
-1. **HOT leads first** — reach out to German trade compliance firm (already using n8n language in job ads) and Canada law/allied health firms
-2. **Australia health clinics** — high volume, well-documented manual pain, receptive to digital tools
-3. **UAE import/export** — DMCC companies respond well to ROI-focused pitches; WhatsApp-based outreach works
-4. **Frame as ROI, not technology** — "save 12 hrs/week on customs paperwork" beats "n8n automation"
+| # | Company | Sector | Country | Score | URL |
+|---|---------|--------|---------|-------|-----|
+| 18 | MYTILINEOS S.A. | Legal Ops | UK | 7.3 | [LinkedIn](https://uk.linkedin.com/jobs/view/legal-administration-assistant-at-mytilineos-s-a-3493880181) |
+
+---
+
+## Link Reliability Guide
+
+- **n8ndevs.com job URLs** — stable, purpose-built job board for n8n work; links persist
+- **Upwork job URLs** — moderately stable; use within a few weeks
+- **Bayt.com job URLs** — stable individual listing pages; Bayt listings stay up longer than LinkedIn
+- **LinkedIn `/jobs/view/` URLs** — expire in 30–90 days, redirect to category pages. Always note the job number in the URL and fall back to the company's LinkedIn page
+
+---
+
+## Recommended Outreach Order
+
+1. **n8ndevs.com leads (1–7)** — highest intent, already spending; reach out via the original Upwork/Freelancer posting
+2. **Talent Global LLC (Spain)** — verified active LinkedIn; automation budget committed
+3. **GrowthRoles Germany posting** — explicitly n8n-aware; one contact = multiple SMB clients
+4. **FreezPak Logistics** — family-owned, verified active LinkedIn; document automation pitch is clean
+5. **UAE/Saudi Bayt.com document controller roles** — pitch to hiring manager: "before you hire a DC, let me show you how n8n automates 80% of that role"
 
 ---
 
 ## Files
-- **Lead CSV:** `jobs-data/jobs/leadgen/linkedin_leads_mtg43.csv` — 21 leads, fully scored and ranked
-- **Source research:** `jobs-data/sources/job_sources.csv`
+- **Lead CSV (revised):** `jobs-data/jobs/leadgen/linkedin_leads_mtg43.csv` — 18 leads, scored and ranked
+- **Prev report:** replaced in-place
